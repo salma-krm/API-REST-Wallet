@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->string('description');    
             $table->float('amount');
             $table->date('date');
-            $table->foreignId('wallet_id')->constrained('wallets')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('status',['annuler','terminer'])->default('terminer');
+            $table->foreignId('sender_id')->constrained('wallets')->onDelete('cascade');
+            $table->foreignId('receiver_id')->constrained('wallets')->onDelete('cascade');
             $table->timestamps();
         });
         

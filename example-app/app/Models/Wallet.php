@@ -12,5 +12,13 @@ class Wallet extends Model
         'user_id',
         'number',
         'balance',
+        'status',
     ];
+    public function User(){
+        return $this->hasOne(User::class);
+    }
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
+    }
+
 }

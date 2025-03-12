@@ -27,6 +27,9 @@ class User extends Authenticatable
     public function Role(){
         return $this->belongsTo(Role::class);
     }
+    public function wallet(){
+        return $this->belongsTo(Wallet::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
